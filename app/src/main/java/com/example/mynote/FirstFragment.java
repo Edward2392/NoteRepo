@@ -1,5 +1,6 @@
 package com.example.mynote;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -21,12 +22,36 @@ import java.util.List;
 
 
 public class FirstFragment extends Fragment {
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
+    public interface OnRecordClicked{
+         void onRecordClicked(Record record);
+    }
+
+    private OnRecordClicked onRecordClicked;
 
     public FirstFragment() {
         // Required empty public constructor
     }
 
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (context instanceof OnRecordClicked){
+            onRecordClicked = (OnRecordClicked) context;
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        onRecordClicked = null;
+        super.onDetach();
+
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,11 +66,18 @@ public class FirstFragment extends Fragment {
 
         List<Record> records = new RecordRepository().getRecord();
 
-        LinearLayout recordList = (LinearLayout) view;
+        LinearLayout recordList = view.findViewById(R.id.recordList);
 
         for (Record record : records) {
 
             View recordView = LayoutInflater.from(requireContext()).inflate(R.layout.record, recordList, false);
+
+            recordView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    openRecordDetail(record);
+                }
+            });
 
            TextView textView = recordView.findViewById(R.id.recordOne);
            textView.setText(record.getHeading());
@@ -54,6 +86,13 @@ public class FirstFragment extends Fragment {
             editText.setText(record.getFullRecord());
 
             recordList.addView(recordView);
+        }
+
+    }
+
+    private void openRecordDetail(Record record) {
+        if (onRecordClicked != null){
+            onRecordClicked.onRecordClicked(record);
         }
 
     }

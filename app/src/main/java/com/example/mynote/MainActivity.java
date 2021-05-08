@@ -7,15 +7,19 @@ import androidx.fragment.app.ListFragment;
 
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import com.example.mynote.domain.Record;
+
+public class MainActivity extends AppCompatActivity implements FirstFragment.OnRecordClicked {
+
+    private boolean isLandscape = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        boolean isLandscape = getResources().getBoolean(R.bool.isLandscape);
-
+        isLandscape = getResources().getBoolean(R.bool.isLandscape);
         if (!isLandscape) {
             FragmentManager fragmentManager = getSupportFragmentManager();
 
@@ -27,5 +31,23 @@ public class MainActivity extends AppCompatActivity {
                         .commit();
             }
         }
+    }
+
+    @Override
+    public void onRecordClicked(Record record) {
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
+        if (isLandscape) {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.details_fragment, DetailsFragment.newInstance(record))
+                    .commit();
+        } else {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.container, DetailsFragment.newInstance(record))
+                    .addToBackStack(null)
+                    .commit();
+        }
+
     }
 }
