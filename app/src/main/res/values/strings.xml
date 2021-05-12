@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">My Note</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Heading">Заметка 1</string>
+    <string name="FullRecord" />
+    <string name="Heading2">Заметка 2</string>
+    <string name="Heading3">Заметка 3</string>
+    <string name="FullRecord1">1</string>
+    <string name="FullRecord2">2</string>
+    <string name="FullRecord3">3</string>
+    <string name="note_1">Заметка 1</string>
+    <string name="description">Описание</string>
 </resources>
