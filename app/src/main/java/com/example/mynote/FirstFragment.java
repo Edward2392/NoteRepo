@@ -72,12 +72,7 @@ public class FirstFragment extends Fragment {
 
             View recordView = LayoutInflater.from(requireContext()).inflate(R.layout.record, recordList, false);
 
-            recordView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    openRecordDetail(record);
-                }
-            });
+            recordView.setOnClickListener(v -> openRecordDetail(record));
 
            TextView textView = recordView.findViewById(R.id.recordOne);
            textView.setText(record.getHeading());

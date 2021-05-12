@@ -9,4 +9,6 @@
     <string name="FullRecord1">1</string>
     <string name="FullRecord2">2</string>
     <string name="FullRecord3">3</string>
+    <string name="note_1">Заметка 1</string>
+    <string name="description">Описание</string>
 </resources>
