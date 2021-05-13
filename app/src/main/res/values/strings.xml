@@ -11,4 +11,13 @@
     <string name="FullRecord3">3</string>
     <string name="note_1">Заметка 1</string>
     <string name="description">Описание</string>
+    <string name="add_note">Добавить</string>
+    <string name="search_note">Поиск</string>
+    <string name="settings">Настройки</string>
+    <string name="about">О приложении</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="_45555">My note</string>
+    <string name="version">Версия: 0.1</string>
+
 </resources>
