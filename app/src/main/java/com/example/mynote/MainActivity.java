@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.ListFragment;
 
+import android.content.ClipData;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -72,7 +73,8 @@ public class MainActivity extends AppCompatActivity implements FirstFragment.OnR
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(item -> {
             int id = item.getItemId();
-            if (navigateFragment(id)) {
+
+            if (id == R.id.action_about) {
                 drawer.closeDrawer(GravityCompat.START);
                 return true;
             }
@@ -125,6 +127,8 @@ public class MainActivity extends AppCompatActivity implements FirstFragment.OnR
 
     }
 
+
+/*
     private boolean navigateFragment(int id) {
 
         switch (id) {
@@ -137,7 +141,7 @@ public class MainActivity extends AppCompatActivity implements FirstFragment.OnR
 
     private void addFragment(AboutFragment aboutFragment) {
         fragmentManager.beginTransaction()
-                .replace(R.id.action_about, aboutFragment)
+                .replace(R.id.version_app, aboutFragment)
                 .commit();
-    }
+    }*/
 }
