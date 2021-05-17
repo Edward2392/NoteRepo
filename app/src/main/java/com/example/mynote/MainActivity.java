@@ -14,6 +14,7 @@ import android.content.ClipData;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mynote.domain.Record;
@@ -69,16 +70,24 @@ public class MainActivity extends AppCompatActivity implements FirstFragment.OnR
                 R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+        TextView version = findViewById(R.id.version_app);
+
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(item -> {
             int id = item.getItemId();
 
             if (id == R.id.action_about) {
-                drawer.closeDrawer(GravityCompat.START);
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new AboutFragment())
+                        .commit();
                 return true;
             }
+
+            drawer.closeDrawer(GravityCompat.START);
             return false;
+
+
         });
     }
 
