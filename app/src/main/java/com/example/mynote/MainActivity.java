@@ -9,6 +9,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.ListFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.ClipData;
 import android.os.Bundle;
@@ -103,6 +105,7 @@ public class MainActivity extends AppCompatActivity implements FirstFragment.OnR
         getMenuInflater().inflate(R.menu.first_menu, menu);
         return true;
 
+
     }
 
     @Override
@@ -133,8 +136,13 @@ public class MainActivity extends AppCompatActivity implements FirstFragment.OnR
                     .addToBackStack(null)
                     .commit();
         }
+        RecyclerView importantList = findViewById(R.id.list);
+        RecyclerView.LayoutManager lm = new LinearLayoutManager(this,RecyclerView.VERTICAL,false);
+        importantList.setLayoutManager(lm);
 
     }
+
+
 
 
 /*
