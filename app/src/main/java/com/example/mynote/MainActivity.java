@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity implements FirstFragment.OnR
                     .commit();
         }
         RecyclerView importantList = findViewById(R.id.list);
-        RecyclerView.LayoutManager lm = new LinearLayoutManager(this,RecyclerView.VERTICAL,false);
+        RecyclerView.LayoutManager lm = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         importantList.setLayoutManager(lm);
 
     }
